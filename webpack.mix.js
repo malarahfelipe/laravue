@@ -1,5 +1,6 @@
 const mix = require('laravel-mix');
-
+require('laravel-mix-postcss-config');
+require('vue')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,4 +13,10 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css')
+    .vue({ version: 2 })
+    .extract(['vue'])
+    .postCss('resources/css/app.css', 'public/css', [
+      require('tailwindcss'),
+      require('autoprefixer')
+    ]);
