@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "es2015",
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016",
+      "es2017",
+      "ESNext"
+    ],
+    "moduleResolution": "node",
+    "allowJs": true,
+    "sourceMap": true,
+    "outDir": "./dist",
+    "strict": true ,
+    "strictNullChecks": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "include": [ "resources/js/**/*", "resources/js/**/*.vue", "resources/js/**/*.ts" ],
+  "exclude": [ "public", "vendor", "dist", "node_modules" ]
+}

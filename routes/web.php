@@ -16,7 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::post('/storeCar','CarsController@storeCar');
-Route::get('/getCars', 'CarsController@getCars');
-Route::post('/deleteCar/{id}', 'CarsController@deleteCar');
-Route::post('/editCars/{id}', 'CarsController@editCar');
+//Users
+Route::get('/getUserByUid/{uid}', 'UsersController@getUserByUid');
+Route::post('/storeUser', 'UsersController@storeUser');
+// Cities
+Route::get('/getCities', 'CitiesController@getCities');
+// Clients
+Route::post('/storeClient','ClientsController@storeClient');
+Route::get('/getClients', 'ClientsController@getClients');
+Route::post('/deleteClient/{id}', 'ClientsController@deleteClient');
+Route::post('/editClients/{id}', 'ClientsController@editClient');

@@ -1,6 +1,6 @@
 const mix = require('laravel-mix');
+require('laravel-mix-tailwind');
 require('laravel-mix-postcss-config');
-require('vue')
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,11 +12,23 @@ require('vue')
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css')
-    .vue({ version: 2 })
-    .extract(['vue'])
-    .postCss('resources/css/app.css', 'public/css', [
-      require('tailwindcss'),
-      require('autoprefixer')
-    ]);
+mix.ts('resources/js/app.ts', 'public/js')
+  .webpackConfig({
+    module: {
+      rules: [
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader",
+          options: { appendTsSuffixTo: [/\.vue$/] },
+          exclude: /node_modules/,
+        }
+      ]
+    },
+    resolve: {
+      extensions: ["*", ".js", ".jsx", ".vue", ".vue.ts", ".ts", ".tsx"]
+    }
+  })
+  .sass('resources/sass/app.scss', 'public/css')
+  .vue({ version: 2 })
+  .postCss('resources/css/app.css', 'public/css')
+  .tailwind('./tailwind.config.js');
